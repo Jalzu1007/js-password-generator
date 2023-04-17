@@ -27,19 +27,30 @@ var passwordLength = prompt("How many characters would you like your password to
 
   else{
     lowerCase = confirm("Click OK to confirm including lower case characters.");
-    upperCase= confirm("Click OK to confirm including upper case letters.");
+    upperCase = confirm("Click OK to confirm including upper case letters.");
     numberCharacters = confirm("Click OK to confirm including numeric characters.");
     symbolCharacters = confirm("Click OK to confirm including special characters.");
   }
 
-  //With the user input determine which Arrays it applies too
+  //With the user input determine which Arrays it applies too, connecting both string Arrays
   if (lowercase === true) {
     userOptions =  userOptions.concat(lowerCaseLetters);
   }
 
-  
+  if (upperCase === true) {
+    userOptions = userOptions.concat(upperCaseLetters);
+  }
 
+  if (numberCharacters === true) {
+    userOptions = userOptions.concat(numericCharacters);
+  }
+
+  if (symbolCharacters === true) {
+    userOptions = userOptions.concat(specialCharacters);
+  }
 }
+
+//Loop through the arrays to create a userPassword to match the passwordLength given by the user
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
