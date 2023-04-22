@@ -24,6 +24,7 @@ var userPassword = [];
 
 //Generate password inputs for the user
 function generatePassword() {
+userPassword = [];
 var passwordLength = prompt("How many characters would you like your password to contain?");
   if (passwordLength === null) {
     generateBtn();
