@@ -9,9 +9,6 @@ function writePassword() {
   passwordText.value = password;
 } 
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
 // Arrays for the characters password to be used in the generator for the user
 var lowerCaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperCaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V","W", "X", "Y", "Z" ];
@@ -19,20 +16,21 @@ var numericCharacters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 var specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*", "-", "_", "=", "/", "?"];
 
 //Arrays for the input value from the user
-var userOptions = [];
 var userPassword = [];
+var userOptions = [];
 
 //Generate password inputs for the user
 function generatePassword() {
-userPassword = [];
-var passwordLength = prompt("How many characters would you like your password to contain?");
+  userOptions = [];
+  userPassword = [];
+var passwordLength = parseInt(prompt("How many characters would you like your password to contain?"));
   if (passwordLength === null) {
-    generateBtn();
-} 
+    return "";
+  } 
 
   else if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
     alert("Please enter a valid number length between 8 and 128 characters.");
-    generatePassword();
+    return "";
   }
 
   else {
@@ -62,16 +60,18 @@ var passwordLength = prompt("How many characters would you like your password to
 //Added if statement if any characters weren't selected, takes back to generatePassword()
   if (userOptions.length === 0) {
     alert("Please confirm at least one type of character to include in your password.");
-    generatePassword();
+    return "";
   }
 
 //Loop through the arrays to create a userPassword to match the passwordLength given by the user
   for (var i = 0; i < passwordLength; i++) {
     var userIndex = userOptions[Math.floor(Math.random() * userOptions.length)];
     userPassword.push(userIndex);
-}
+  }
 
     var password = userPassword.join("") 
     return password;
 }
 
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
