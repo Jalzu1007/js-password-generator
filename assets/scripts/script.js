@@ -24,11 +24,7 @@ function generatePassword() {
   userOptions = [];
   userPassword = [];
 var passwordLength = parseInt(prompt("How many characters would you like your password to contain?"));
-  if (passwordLength === null) {
-    return "";
-  } 
-
-  else if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
+  if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
     alert("Please enter a valid number length between 8 and 128 characters.");
     return "";
   }
